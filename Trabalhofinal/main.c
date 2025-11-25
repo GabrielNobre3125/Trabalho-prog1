@@ -8,15 +8,17 @@ int main(void)
     conta_init();
     long long valores = 0;
     int opcao = 0;
-    int situacaotransacao = 0;
+    int retorno_funcoes = 0;
 
     while (opcao != 7)
     {
-        if(situacaotransacao == 3)
+
+        if(retorno_funcoes == ERRO_CAPACIDADE_LOG)
         {
             printf("Capacidade máxima de transações atingidas. Obrigado por usar o Voidbank!\n");
             break;
         }
+
         printf("\n\nOperações Disponíveis:\n");
         printf("1. Depositar (conta corrente)\n");
         printf("2. Sacar (sem cheque especial)\n");
@@ -28,34 +30,43 @@ int main(void)
 
         printf("Escolha: ");
         scanf("%d", &opcao);
+
+
         switch(opcao)
         {
             case DEP:
 
             printf("Digite o valor do depósito: ");
             scanf("%lld", &valores);
-            situacaotransacao = depositar(valores);
-            if(situacaotransacao == ERRO_VALOR_INVALIDO)
+            retorno_funcoes = depositar(valores);
+            if(retorno_funcoes == ERRO_VALOR_INVALIDO)
             {
-                printf("Valor do depósito inválido.");
+                printf("Valor do deposito inválido.");
             }
-            else if(situacaotransacao == ERRO_CAPACIDADE_LOG)
+            else if(retorno_funcoes == OK)
             {
-                printf("Capacidade máxima de transações atingidas. Obrigado por usar o Voidbank!\n");
-                break;  
+                retorno_funcoes = registrar_transacao(DEP, valores);
             }
-            else if(situacaotransacao == OK)
+            break;
+
+            case SAQ:
+            
+            printf("Digite o valor do saque: ");
+            scanf("%lld", &valores);
+            retorno_funcoes = sacar(valores);
+            if(retorno_funcoes == ERRO_VALOR_INVALIDO)
             {
-                conta.log[conta.nlog].tipo = DEP;
-                conta.log[conta.nlog].valor = valores;
-                conta.log[conta.nlog].saldo_corrente_apos = conta.saldo_corrente;
-                conta.log[conta.nlog].saldo_poupanca_apos = conta.saldo_poupanca;
-                time_t agora = time(NULL);
-                struct tm *tempo = localtime(&agora);
-                strftime(conta.log[conta.nlog].quando, sizeof(conta.log[conta.nlog].quando), "%d/%m/%Y %H:%M%S", tempo);
-                conta.nlog++;
-                break;
+                printf("Valor do saque inválido.\n");
             }
+            else if(retorno_funcoes == ERRO_SALDO_INSUFICIENTE)
+            {
+                printf("Saldo insuficiente.\n");
+            }
+            else if(retorno_funcoes == OK)
+            {
+                retorno_funcoes = registrar_transacao(SAQ, valores);
+            }
+            break;
 
             case 7:
 
@@ -64,7 +75,7 @@ int main(void)
 
             default:
 
-                printf("Opção inválida");
+                printf("Opção inválida\n");
                 break;
 
         }

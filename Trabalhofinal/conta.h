@@ -29,16 +29,19 @@ enum {
     ERRO_CAPACIDADE_LOG = 3
 };
 
-void conta_init(void);                   // inicializar a conta logo no início da aplicação
+void conta_init(void);                                          // inicializar a conta logo no início da aplicação
 
-int  depositar(long long valor);         // depositar na conta
-int  sacar(long long valor);             // sacar da conta
-int  aplicar_poupanca(long long valor);  // passar dinheiro da conta para a poupança
-int  resgatar_poupanca(long long valor); // passar dinheiro da poupança para a conta
+int  depositar(long long valor);                                // depositar na conta
+int  sacar(long long valor);                                    // sacar da conta
+int  aplicar_poupanca(long long valor);                         // passar dinheiro da conta para a poupança
+int  resgatar_poupanca(long long valor);                        // passar dinheiro da poupança para a conta
+int registrar_transacao(TipoTransacao tipo, long long valores) //registra as transações no log
 
-long long saldo_corrente(void);          // retorna o valor do saldo corrente
-long long saldo_poupanca(void);          // retorna o valor da poupança
+#endif // CONTA_H
+long long saldo_corrente(void);                                 // retorna o valor do saldo corrente
+long long saldo_poupanca(void);                                 // retorna o valor da poupança
 
-void extrato_imprimir(void);             // imprime as transações realizadas e o saldo final
+void extrato_imprimir(void);                                    // imprime as transações realizadas e o saldo final
+void registrar_transacao(TipoTransacao tipo, long long valores) //registra as transações no log
 
 #endif // CONTA_H
