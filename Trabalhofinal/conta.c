@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <time.h>
 #include "conta.h"
 
 Conta conta;
@@ -44,14 +46,14 @@ int sacar(long long valor)
     return OK;
 }
 
-int registrar_transacao(TipoTransacao tipo, long long valores)
+int registrar_transacao(TipoTransacao tipo, long long valor)
 {
     if(conta.nlog >= MAX_TRANS)
     {
         return ERRO_CAPACIDADE_LOG;
     }
     conta.log[conta.nlog].tipo = tipo;
-    conta.log[conta.nlog].valor = valores;
+    conta.log[conta.nlog].valor = valor;
     conta.log[conta.nlog].saldo_corrente_apos = conta.saldo_corrente;
     conta.log[conta.nlog].saldo_poupanca_apos = conta.saldo_poupanca;
     time_t agora = time(NULL);
