@@ -70,6 +70,58 @@ int main(void)
             }
             break;
 
+            case APLI:
+
+            printf("Digite o quanto quer aplicar na poupança: ");
+            scanf("%lld", &valores);
+            retorno_funcoes = aplicar_poupanca(valores);
+            if(retorno_funcoes == ERRO_VALOR_INVALIDO)
+            {
+                printf("\n\nValor invalido.\n\n");
+            }
+            else if(retorno_funcoes == ERRO_SALDO_INSUFICIENTE)
+            {
+                printf("\n\nSaldo insuficiente.\n\n");
+            }
+            else if(retorno_funcoes == OK)
+            {
+                 printf("\n\nAplicação efetuada!\n\n");
+                retorno_funcoes = registrar_transacao(APLI, valores);
+            }
+            break;
+
+            case RESG:
+
+
+            printf("Digite o quanto quer resgatar na poupança: ");
+            scanf("%lld", &valores);
+            retorno_funcoes = resgatar_poupanca(valores);
+            if(retorno_funcoes == ERRO_VALOR_INVALIDO)
+            {
+                printf("\n\nValor invalido.\n\n");
+            }
+            else if(retorno_funcoes == ERRO_SALDO_INSUFICIENTE)
+            {
+                printf("\n\nSaldo insuficiente.\n\n");
+            }
+            else if(retorno_funcoes == OK)
+            {
+                 printf("\n\nResgate efetuado!\n\n");
+                retorno_funcoes = registrar_transacao(APLI, valores);
+            }
+            break;
+
+            case 5:
+
+            printf("\n\nSeu saldo na conta corrente é: %lld\n", conta.saldo_corrente);
+            printf("Seu saldo na conta poupança é: %lld\n", conta.saldo_poupanca);
+            break;
+
+            case 6:
+
+            extrato_imprimir();
+            break;
+
             case 7:
 
                 printf("\n\nObrigado por utilizar o voidbank!\n\n");
