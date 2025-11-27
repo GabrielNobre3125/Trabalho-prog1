@@ -35,7 +35,7 @@ int  depositar(long long valor);                                // depositar na 
 int  sacar(long long valor);                                    // sacar da conta
 int  aplicar_poupanca(long long valor);                         // passar dinheiro da conta para a poupança
 int  resgatar_poupanca(long long valor);                        // passar dinheiro da poupança para a conta
-int registrar_transacao(TipoTransacao tipo, long long valor);   //registra as transações no log
+int  registrar_transacao(TipoTransacao tipo, long long valor);  //registra as transações no log
 
 long long saldo_corrente(void);                                 // retorna o valor do saldo corrente
 long long saldo_poupanca(void);                                 // retorna o valor da poupança
