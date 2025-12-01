@@ -1,3 +1,4 @@
+//Gabriel Nobre e Arthur Aragão
 #ifndef CONTA_H
 #define CONTA_H
 

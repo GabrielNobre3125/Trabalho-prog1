@@ -1,3 +1,4 @@
+//Gabriel Nobre e Arthur Aragão
 #include <stdio.h>
 #include <time.h>
 #include "conta.h"

@@ -1,3 +1,4 @@
+//Gabriel Nobre e Arthur Aragão
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
@@ -15,7 +16,7 @@ int main(void)
 
         if(retorno_funcoes == ERRO_CAPACIDADE_LOG)
         {
-            printf("\n\nCapacidade máxima de transações atingidas. Obrigado por usar o Voidbank!\n\n");
+            printf("\n\n[ALERTA] Capacidade de registros atingida (100 transações). O serviço do VoidBank sairá do ar agora.\n\n");
             break;
         }
 
@@ -34,7 +35,7 @@ int main(void)
 
         switch(opcao)
         {
-            case DEP:
+            case 1:
 
             printf("Digite o valor do depósito: ");
             scanf("%lld", &valores);
@@ -50,7 +51,7 @@ int main(void)
             }
             break;
 
-            case SAQ:
+            case 2:
             
             printf("Digite o valor do saque: ");
             scanf("%lld", &valores);
@@ -70,7 +71,7 @@ int main(void)
             }
             break;
 
-            case APLI:
+            case 3:
 
             printf("Digite o quanto quer aplicar na poupança: ");
             scanf("%lld", &valores);
@@ -90,7 +91,7 @@ int main(void)
             }
             break;
 
-            case RESG:
+            case 4:
 
 
             printf("Digite o quanto quer resgatar na poupança: ");
@@ -107,7 +108,7 @@ int main(void)
             else if(retorno_funcoes == OK)
             {
                  printf("\n\nResgate efetuado!\n\n");
-                retorno_funcoes = registrar_transacao(APLI, valores);
+                retorno_funcoes = registrar_transacao(RESG, valores);
             }
             break;
 
